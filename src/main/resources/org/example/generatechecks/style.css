@@ -1,0 +1,5 @@
+.button{
+    -fx-background-image: url("src/main/resources/org/example/generatechecks/style.css");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
