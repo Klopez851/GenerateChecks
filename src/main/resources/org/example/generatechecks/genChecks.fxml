@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="462.0" prefWidth="533.0" spacing="20.0" stylesheets="/org/example/generatechecks/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.generatechecks.HelloController">
+<VBox alignment="CENTER" prefHeight="421.0" prefWidth="464.0" spacing="20.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.generatechecks.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <HBox alignment="TOP_CENTER" prefHeight="28.0" prefWidth="440.0">
+   <HBox alignment="TOP_CENTER" prefHeight="13.0" prefWidth="493.0">
       <children>
          <Label text="Time Left:" textAlignment="CENTER">
             <font>
@@ -34,7 +34,7 @@
          </Label>
       </children>
    </HBox>
-   <HBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="473.0">
+   <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="473.0">
       <children>
          <Label text="Lunch in:">
             <font>
@@ -82,35 +82,41 @@
          <Font name="Press Start 2P" size="30.0" />
       </font>
    </Label>
-   <HBox alignment="CENTER" prefHeight="79.0" prefWidth="493.0">
+   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="493.0">
       <children>
-         <ImageView fx:id="alarm_bell" fitHeight="93.0" fitWidth="99.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="alarm_bell" fitHeight="50.0" fitWidth="60.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@alarm_bell.png" />
             </image>
          </ImageView>
-          <Button alignment="CENTER" text="Check!" styleClass="button">
+          <Button alignment="CENTER" styleClass="button" text="Check!">
             <font>
                <Font name="Press Start 2P" size="12.0" />
             </font>
+            <HBox.margin>
+               <Insets left="25.0" right="25.0" />
+            </HBox.margin>
          </Button>
-         <ImageView cache="true" fitHeight="87.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <ImageView cache="true" fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" smooth="false">
             <image>
                <Image url="@alarm_bell.png" />
             </image></ImageView>
       </children>
    </HBox>
-   <Label text="Upcoming Checks:">
+   <Label prefHeight="4.0" prefWidth="190.0" text="Upcoming Checks:">
       <font>
          <Font name="Press Start 2P" size="12.0" />
       </font>
+      <VBox.margin>
+         <Insets top="10.0" />
+      </VBox.margin>
    </Label>
    <Label text="1:00 1:15 1:30 1:45">
       <font>
          <Font name="Press Start 2P" size="12.0" />
       </font>
    </Label>
-   <ProgressBar prefWidth="200.0" progress="0.0" />
+   <ProgressBar prefWidth="200.0" />
    <ImageView fitHeight="34.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@Empty_heart.png" />

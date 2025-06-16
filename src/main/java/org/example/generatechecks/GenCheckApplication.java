@@ -13,10 +13,10 @@ public class GenCheckApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org/example/generatechecks/genChecks.fxml"));
-        Scene scene = new Scene(root, 400,400 );
+        Scene scene = new Scene(root);
 
         //STAGE SETTINGS
-        stage.initStyle(StageStyle.UNDECORATED); // MAKE SURE TO ADD EXIT BUTTON
+        stage.initStyle(StageStyle.DECORATED); // MAKE SURE TO ADD EXIT BUTTON
         stage.setTitle("Check Generator");
         stage.setResizable(false);
         stage.setX(877);

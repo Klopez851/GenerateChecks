@@ -46,8 +46,12 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+                <includes>
+                    <include>PressStart2P-vaV7.ttf</include>
+                </includes>
             </resource>
         </resources>
+
 
         <plugins>
             <plugin>
