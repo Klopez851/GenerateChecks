@@ -1,4 +1,4 @@
-package org.example;
+package org.example.generatechecks;
 //imports
 import java.time.LocalTime;
 import java.util.ArrayList;
