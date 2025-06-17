@@ -103,10 +103,7 @@
             </image></ImageView>
       </children>
    </HBox>
-   <Label prefHeight="4.0" prefWidth="190.0" text="Upcoming Checks:">
-      <font>
-         <Font name="Press Start 2P" size="12.0" />
-      </font>
+   <Label prefHeight="4.0" prefWidth="190.0" text="Upcoming Checks:" styleClass="custom-font-label">
       <VBox.margin>
          <Insets top="10.0" />
       </VBox.margin>

@@ -1,5 +1,13 @@
 .button{
-    -fx-background-image: url("src/main/resources/org/example/generatechecks/style.css");
+    -fx-background-image: url("org/example/generatechecks/button.png");
     -fx-background-size: cover;
     -fx-background-position: center;
+}
+@font-face {
+    font-family: 'CustomFont';
+    src: url('PressStart2P-vaV7.ttf');
+}
+
+.custom-font-label {
+    -fx-font-family: 'CustomFont';
 }
