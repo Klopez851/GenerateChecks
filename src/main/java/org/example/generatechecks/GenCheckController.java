@@ -1,27 +1,44 @@
 package org.example.generatechecks;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
-public class HelloController {
-//    @FXML
-//    private ImageView alarm_bell;
-//    @FXML
-//    private Rectangle clipRectangle;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+public class GenCheckController {
+    @FXML // this annotation links this variable to the element wih the same id name as the variable in the fxml file
+    private Label clock;
 
     @FXML
-    private Text welcomeText;
+    private Label checkTimes;
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+    //a formatter that mskes it so that the time is dysplaied in a certain format
+
+    private LocalTime time;
+
+    @FXML // the fxml file calls this initialize function when the app is launched
+    public void initialize() {
+        //updates the clock every second wiht the current time
+        Timeline sceneClock = new Timeline( new KeyFrame(Duration.ZERO, e ->{
+            time = LocalTime.now();
+            clock.setText(time.format(formatter));
+        }),
+            new KeyFrame(Duration.seconds(1))
+        );
+        sceneClock.setCycleCount(Animation.INDEFINITE);
+        sceneClock.play();
+
     }
-//    @FXML
-//    public void initialize() {
-//        alarm_bell.setClip(clipRectangle);
-//    }
+
+    public void getChecks(){
+        Time checks = new Time();
+
+    }
 }

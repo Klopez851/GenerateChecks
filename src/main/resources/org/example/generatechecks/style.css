@@ -1,13 +1,36 @@
 .button{
-    -fx-background-image: url("org/example/generatechecks/button.png");
-    -fx-background-size: cover;
-    -fx-background-position: center;
+    -fx-background-image: url("button.png");
+    -fx-background-size: 165px 52px;
+    -fx-background-position: -8px -6px;
+    -fx-background-radius: 15;
 }
-@font-face {
-    font-family: 'CustomFont';
+@font-face { /* this how you initalize the font in the css, the family name MUST match the actual name*/
+    font-family: 'Press Start 2P';
     src: url('PressStart2P-vaV7.ttf');
 }
+.customFont{
+    -fx-font-family: 'Press Start 2P';
+    -fx-font-color: black;
+}
 
-.custom-font-label {
-    -fx-font-family: 'CustomFont';
+.label {
+    -fx-font-family: 'Press Start 2P';
+}
+
+.background{
+    -fx-background-image: url("Background.png");
+    -fx-background-size: 750px 450px;
+    -fx-background-position: center center;
+}
+
+.progressbar{
+    -fx-color-fill: purple;
+}
+
+.leftCloud{
+    -fx-background-image: url("clouds_left.png");
+}
+
+.rightCloud{
+    -fx-background-image: url("clouds_right.png");
 }
