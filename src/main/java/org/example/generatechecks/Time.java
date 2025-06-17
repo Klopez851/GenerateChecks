@@ -41,6 +41,7 @@ public class Time {
     // takes the current time and randomely generates numbers between 10 and 20 if there is more than 40 mins left of
     // the hr, and random checks w/o any bounds if there is less than 40
     private void genChecks(){
+        updateCurrentTime();
         int timeLeft = 60-currentTime.getMinute();
         boolean timeGen = true;
         Random rand = new Random();
@@ -48,7 +49,6 @@ public class Time {
 
         //runs if there is more than 40 mins left of the hr
         if(timeLeft <=60 && timeLeft >=40){
-            System.out.println("first forloop");///////////////////////////////////////
             while (timeGen) {
                 for (int i = 0; i < 4; i++) {
                     //assures the numbers generates are greater than 9 but less than 21
@@ -64,7 +64,6 @@ public class Time {
             }
 
         }else if (timeLeft >3){
-            System.out.println("second loop");///////////////////////////////////////
             while (timeGen) {
                 //generates random checking times w/ no bounds
                 for (int i = 0; i < 4; i++) {
@@ -80,8 +79,6 @@ public class Time {
         }else{
             System.out.println("Too Little Time Left to  generate checks");
         }
-        System.out.println(currentTime);////////////////////////////////
-        System.out.println(Arrays.toString(tempArr));/////////////
         for(int i = 0;i<4;i++){
             int min = 0;
             //if index is xero there is no index to call back to
@@ -96,7 +93,7 @@ public class Time {
     }
 
     //this method updates the currentTime variable stores in a Time instance
-    public void updateCurrentTime(){
+    private void updateCurrentTime(){
         currentTime = LocalTime.now();
     }
 

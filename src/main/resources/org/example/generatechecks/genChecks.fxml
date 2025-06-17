@@ -10,12 +10,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 <!-- whole thing was mostly done with ScenenBuilder, but this structure is ver similar to HTML in the
  sense that you have a whole bunch of elements wraped in each other and each has attributes that you can
  add, as well as the ability to link a styleshee.css, which i think is pretty cool since i thought that
  css was just for websites, so using it for app dev has been really eye opening, also the @ before every file tells
  the fxml file that the file in question is w/n the same directory as this file, whichc is neat cuz i didnt
  know-->
+
 <AnchorPane styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.generatechecks.GenCheckController">
    <children>
       <ImageView blendMode="SOFT_LIGHT" fitHeight="419.0" fitWidth="441.0" layoutX="11.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -47,12 +49,12 @@
                      <Insets right="70.0" />
                   </HBox.margin>
                </Label>
-               <Label text="8 hr 15 min" textAlignment="CENTER">
+               <Label fx:id="timeLeft" textAlignment="CENTER">
                   <font>
                      <Font name="Press Start 2P" size="12.0" />
                   </font>
                   <HBox.margin>
-                     <Insets left="50.0" />
+                     <Insets left="0.0" />
                   </HBox.margin>
                </Label>
             </children>
@@ -109,7 +111,7 @@
          </Label>
          <Label prefHeight="16.0" prefWidth="219.0" text="Upcoming Checks:">
             <VBox.margin>
-               <Insets left="30.0" top="10.0" />
+               <Insets left="30.0" top="5.0" />
             </VBox.margin>
          </Label>
          <Label fx:id="checkTimes" text="1:00 1:15 1:30 1:45">
