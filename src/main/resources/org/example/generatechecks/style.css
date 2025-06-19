@@ -1,16 +1,21 @@
-.button{
-    -fx-background-image: url("button.png");
-    -fx-background-size: 165px 52px;
-    -fx-background-position: -8px -6px;
-    -fx-background-radius: 15;
-}
 @font-face { /* this how you initalize the font in the css, the family name MUST match the actual name*/
     font-family: 'Press Start 2P';
     src: url('PressStart2P-vaV7.ttf');
 }
-.customFont{
+.styledButton {
+    -fx-background-image: url("button.png");
+
+    -fx-background-size: 165px 52px;
+    -fx-background-position: -8px -6px;
+    -fx-background-radius: 15;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 36px;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+
     -fx-font-family: 'Press Start 2P';
-    -fx-font-color: black;
+    -fx-text-fill: black;
 }
 
 .label {

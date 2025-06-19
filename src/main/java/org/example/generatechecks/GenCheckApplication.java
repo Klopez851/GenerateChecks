@@ -24,7 +24,7 @@ public class GenCheckApplication extends Application {
         //STAGE SETTINGS
         stage.initStyle(StageStyle.DECORATED);
         stage.setTitle("Check Generator");
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setX(770);
         stage.setY(290);
         stage.setScene(scene);//scene added to the stage wiht its added root in order to get windown working

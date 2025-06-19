@@ -5,11 +5,15 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
+import java.sql.SQLOutput;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Timer;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -23,19 +27,27 @@ public class GenCheckController {
     @FXML
     private Label timeLeft;
 
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-    //a formatter that mskes it so that the time is dysplaied in a certain format
+    @FXML
+    private Label checksLeft;
 
+    @FXML
+    private HBox alert;
+
+    //a formatter that mskes it so that the time is dysplaied in a certain format
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
     private LocalTime time;
     private AtomicReference<ArrayList<LocalTime>> checks = new AtomicReference<>(new ArrayList<>());
-
-    //i just realized tha tbc multiple timelines are running at any given time then that means the program
-    //is prolly running parallet/multi-threding
+    private Time checksGenerator;
+    int numOfChecks;
 
     @FXML // the fxml file calls this initialize function when the app is launched
     public void initialize() {
+        numOfChecks = Integer.parseInt(checksLeft.getText());
+        alert.setVisible(false);
+        alert.setManaged(false);
+
         //set some variables
-        Time checksGenerator = new Time();
+        checksGenerator = new Time();
         LocalTime[] lastHour = {LocalTime.now().withMinute(0).withSecond(0)};
         LocalTime endOfShift = LocalTime.of(8, 0);
         AtomicReference<String> remainingHr = new AtomicReference<>();
@@ -45,11 +57,12 @@ public class GenCheckController {
         Timeline sceneClock = new Timeline( new KeyFrame(Duration.ZERO, e ->{
             //live clock
             time = LocalTime.now();
-            clock.setText(time.format(formatter));
+            clock.setText(time.format(formatter).formatted("h"));
 
             //calculates time remaining
-            remainingHr.set(String.valueOf(java.time.Duration.between(endOfShift, time).abs().toHours()));
+            remainingHr.set(String.valueOf(java.time.Duration.between(time, endOfShift).abs().toHours()));
             timeLeft.setText(remainingHr+" hrs "+(60-time.getMinute())+" mins");
+
         }),
             new KeyFrame(Duration.seconds(1))
         );
@@ -59,17 +72,16 @@ public class GenCheckController {
         //used ai for this, gives a clean format to the time
         checkTimes.setText(
                 checks.get().stream()
-                        .map(time -> time.format(DateTimeFormatter.ofPattern("HH:mm")))
+                        .map(time -> time.format(DateTimeFormatter.ofPattern("hh:mm")))
                         .collect(Collectors.joining(" | "))
         );
-
-
         //start the clock animation
         sceneClock.setCycleCount(Animation.INDEFINITE);
         sceneClock.play();
 
-        //check if an hr has passed every second
+
         Timeline hrPassed = new Timeline(new KeyFrame(Duration.seconds(1), e ->{
+            //check if an hr has passed every second
             LocalTime now = LocalTime.now();
             if(now.getMinute() == 0 && now.getSecond() == 0 &&
                     now.getHour() != lastHour[0].getHour()){
@@ -78,16 +90,49 @@ public class GenCheckController {
                 //used ai for this, gives a clean format to the checks list
                 checkTimes.setText(
                     checks.get().stream()
-                            .map(time -> time.format(DateTimeFormatter.ofPattern("HH:mm")))
+                            .map(time -> time.format(DateTimeFormatter.ofPattern("hh:mm")))
                             .collect(Collectors.joining(" | "))
                 );
                 lastHour[0] = LocalTime.now();
             }
+
         }));
         //start the hr checks
         hrPassed.setCycleCount(Animation.INDEFINITE);
         hrPassed.play();
 
+
+//        //check if its time for a check
+//        Timeline timeForCheck = new Timeline(new KeyFrame(Duration.seconds(1), e ->{
+//            //check if an hr has passed every second
+//            LocalTime now = LocalTime.now();
+//            for(LocalTime t: checksGenerator.getMinArr()){
+//                if(now.getMinute() == t.getMinute() && now.getHour() == t.getHour()){
+//                    alert.setVisible(true);
+//                    alert.setManaged(true);
+//                }
+//
+//            }
+//
+//        }));
+//        timeForCheck.setCycleCount(Animation.INDEFINITE);
+//        timeForCheck.play();
+    }
+
+    @FXML
+    public void alertButtonAction(javafx.event.ActionEvent event){
+        alert.setVisible(false);
+        alert.setManaged(false);
+        numOfChecks--;
+        checksLeft.setText(String.valueOf(numOfChecks));
+
     }
 
 }
+
+//make it invisible to beging with
+//check for checks
+//if time for vcheck make it flash
+//reduce number of checks lef
+//if button clicked remove alert
+//else let button flash until time is over

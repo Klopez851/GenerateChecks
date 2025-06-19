@@ -34,6 +34,10 @@ public class Time {
         return minArr;
     }
 
+    public ArrayList<LocalTime> getMinArr(){
+        return minArr;
+    }
+
     ///////////////////
     ///OTHER METHODS///
     ///////////////////
@@ -44,8 +48,9 @@ public class Time {
         updateCurrentTime();
         int timeLeft = 60-currentTime.getMinute();
         boolean timeGen = true;
-        Random rand = new Random();
         int randMin;
+        Random rand = new Random();
+
 
         //runs if there is more than 40 mins left of the hr
         if(timeLeft <=60 && timeLeft >=40){
@@ -81,7 +86,7 @@ public class Time {
         }
         for(int i = 0;i<4;i++){
             int min = 0;
-            //if index is xero there is no index to call back to
+            //if index is zero there is no index to call back to
             if(i== 0){
                 minArr.add(LocalTime.of(currentTime.getHour(),currentTime.getMinute()));
                 minArr.set(i,minArr.get(i).plusMinutes(tempArr[i]));
