@@ -53,7 +53,7 @@ public class GenCheckController {
         AtomicReference<String> remainingHr = new AtomicReference<>();
 
 
-        //updates the clock every second wiht the current time
+        //updates the clock every second with the current time
         Timeline sceneClock = new Timeline( new KeyFrame(Duration.ZERO, e ->{
             //live clock
             time = LocalTime.now();
