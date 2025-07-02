@@ -88,7 +88,7 @@ public class Time {
             int min = 0;
             //if index is zero there is no index to call back to
             if(i== 0){
-                minArr.add(LocalTime.of(currentTime.getHour(),currentTime.getMinute()));
+                minArr.add(LocalTime.of(currentTime.getHour(),currentTime.getMinute(),0));
                 minArr.set(i,minArr.get(i).plusMinutes(tempArr[i]));
             }
             else{

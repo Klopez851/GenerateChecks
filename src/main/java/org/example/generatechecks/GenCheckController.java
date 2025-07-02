@@ -5,15 +5,13 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
-import java.sql.SQLOutput;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Timer;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -79,9 +77,8 @@ public class GenCheckController {
         sceneClock.setCycleCount(Animation.INDEFINITE);
         sceneClock.play();
 
-
+        //check if an hr has passed every second
         Timeline hrPassed = new Timeline(new KeyFrame(Duration.seconds(1), e ->{
-            //check if an hr has passed every second
             LocalTime now = LocalTime.now();
             if(now.getMinute() == 0 && now.getSecond() == 0 &&
                     now.getHour() != lastHour[0].getHour()){
@@ -99,24 +96,21 @@ public class GenCheckController {
         }));
         //start the hr checks
         hrPassed.setCycleCount(Animation.INDEFINITE);
-        hrPassed.play();
+        hrPassed.play();git a
 
-
-//        //check if its time for a check
-//        Timeline timeForCheck = new Timeline(new KeyFrame(Duration.seconds(1), e ->{
-//            //check if an hr has passed every second
-//            LocalTime now = LocalTime.now();
-//            for(LocalTime t: checksGenerator.getMinArr()){
-//                if(now.getMinute() == t.getMinute() && now.getHour() == t.getHour()){
-//                    alert.setVisible(true);
-//                    alert.setManaged(true);
-//                }
-//
-//            }
-//
-//        }));
-//        timeForCheck.setCycleCount(Animation.INDEFINITE);
-//        timeForCheck.play();
+        //check if its time for a check
+        final AtomicBoolean[] hasAlerted = {new AtomicBoolean(false)};
+        Timeline timeForCheck = new Timeline(new KeyFrame(Duration.seconds(1), e ->{
+            LocalTime now = LocalTime.now();
+            for(LocalTime t: checksGenerator.getMinArr()){
+                if(now.getMinute() == t.getMinute() && now.getHour() == t.getHour() && now.getSecond() == t.getSecond()) {
+                    alert.setVisible(true);
+                    alert.setManaged(true);
+                }
+            }
+        }));
+        timeForCheck.setCycleCount(Animation.INDEFINITE);
+        timeForCheck.play();
     }
 
     @FXML
@@ -130,9 +124,3 @@ public class GenCheckController {
 
 }
 
-//make it invisible to beging with
-//check for checks
-//if time for vcheck make it flash
-//reduce number of checks lef
-//if button clicked remove alert
-//else let button flash until time is over
