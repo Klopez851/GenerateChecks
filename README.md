@@ -16,7 +16,7 @@ This JavaFX application generates 4 time-based checkpoints spaced approximately 
 ---
 
 ## 🛠️ Requirements
-- JavaFX SDK 17.0.6
+- JavaFX SDK 24.0.1
 - Maven 3.x
 ---
 
