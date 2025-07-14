@@ -20,6 +20,7 @@ This JavaFX application generates 4 time-based checkpoints spaced approximately 
 
 - Fix midnight shift time calculation bug
 - Implement accurate progress tracking over time
+- Implement local storage of the number of checks left and resetting it after the shift ends
 
 ---
 
