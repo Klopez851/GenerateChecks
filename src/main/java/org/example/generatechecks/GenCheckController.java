@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -57,8 +59,17 @@ public class GenCheckController {
             time = LocalTime.now();
             clock.setText(time.format(formatter).formatted("h"));
 
+            //calculate how much time is left of the shift
+            LocalDate today = LocalDate.now();
+            LocalDateTime now = LocalDateTime.of(today, time);
+            LocalDateTime shiftEnd = LocalDateTime.of(today, endOfShift);
+
+            if(shiftEnd.isBefore(now)){
+                shiftEnd = shiftEnd.plusDays(1);
+            }
+
             //calculates time remaining
-            remainingHr.set(String.valueOf(java.time.Duration.between(time, endOfShift).abs().toHours()));
+            remainingHr.set(String.valueOf(java.time.Duration.between(now, shiftEnd).abs().toHours()));
             timeLeft.setText(remainingHr+" hrs "+(60-time.getMinute())+" mins");
 
         }),
@@ -67,12 +78,14 @@ public class GenCheckController {
 
         //genenrate the first 4 checks
         checks.set(checksGenerator.getMinutes());
+
         //used ai for this, gives a clean format to the time
         checkTimes.setText(
                 checks.get().stream()
                         .map(time -> time.format(DateTimeFormatter.ofPattern("hh:mm")))
                         .collect(Collectors.joining(" | "))
         );
+
         //start the clock animation
         sceneClock.setCycleCount(Animation.INDEFINITE);
         sceneClock.play();
@@ -84,6 +97,7 @@ public class GenCheckController {
                     now.getHour() != lastHour[0].getHour()){
                 //if an hr has passed then update the text and set the last hr to now
                 checks.set(checksGenerator.getMinutes());
+
                 //used ai for this, gives a clean format to the checks list
                 checkTimes.setText(
                     checks.get().stream()
@@ -96,7 +110,7 @@ public class GenCheckController {
         }));
         //start the hr checks
         hrPassed.setCycleCount(Animation.INDEFINITE);
-        hrPassed.play();git a
+        hrPassed.play();
 
         //check if its time for a check
         final AtomicBoolean[] hasAlerted = {new AtomicBoolean(false)};
