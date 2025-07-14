@@ -23,5 +23,6 @@ This JavaFX application generates 4 time-based checkpoints spaced approximately 
 ## 📂 How to Run
 
 1. Clone the repo
-2. Make sure that in project settings -> modules -> sources, your language level is set to 17 and ur using Java SDK 23
+2. Make sure that in project settings -> modules -> sources, your language level is set to 17 and ur using Java SDK 17.0.12
+3. 
 4. Run the main file (genCheckApplication.java)
