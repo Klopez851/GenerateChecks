@@ -29,7 +29,7 @@
 }
 
 .progressbar{
-    -fx-color-fill: purple;
+    -fx-accent: purple
 }
 
 .leftCloud{
