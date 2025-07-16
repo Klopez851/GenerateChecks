@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="GenerateChecks">
+    <output-path>$PROJECT_DIR$/out/artifacts/GenerateChecks</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="org.example.generatechecks.GenCheckApplication" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="GenerateChecks.jar">
+        <element id="module-output" name="GenerateChecks" />
+      </element>
+    </root>
+  </artifact>
+</component>

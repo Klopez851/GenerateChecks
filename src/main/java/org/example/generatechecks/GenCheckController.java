@@ -75,7 +75,7 @@ public class GenCheckController {
 
             //calculates time remaining
             remainingHr.set(String.valueOf(java.time.Duration.between(now, shiftEnd).abs().toHours()));
-            timeLeft.setText(remainingHr+" hrs "+(60-time.getMinute())+" mins");
+            timeLeft.setText(remainingHr+" hrs "+(59-time.getMinute())+" mins");
 
             //set progress bar
             int minutesPassed = (Integer.parseInt(String.valueOf(remainingHr)) * 60) + (60-time.getMinute());
