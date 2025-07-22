@@ -126,7 +126,7 @@
                <Font name="Press Start 2P" size="12.0" />
             </font>
          </Label>
-         <ProgressBar fx:id="progressBar" mouseTransparent="true" pickOnBounds="false" prefWidth="200.0" styleClass="progressbar" />
+         <ProgressBar mouseTransparent="true" pickOnBounds="false" prefWidth="200.0" />
          <HBox alignment="CENTER" pickOnBounds="false" prefHeight="21.0" prefWidth="335.0">
             <children>
                <ImageView fitHeight="34.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">

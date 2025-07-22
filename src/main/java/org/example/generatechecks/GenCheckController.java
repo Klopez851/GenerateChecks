@@ -5,7 +5,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
@@ -34,9 +33,6 @@ public class GenCheckController {
     @FXML
     private HBox alert;
 
-    @FXML
-    private ProgressBar progressBar;
-
     //a formatter that mskes it so that the time is dysplaied in a certain format
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
     private LocalTime time;
@@ -53,9 +49,8 @@ public class GenCheckController {
         //set some variables
         checksGenerator = new Time();
         LocalTime[] lastHour = {LocalTime.now().withMinute(0).withSecond(0)};
-        final LocalTime ENDOFSHIFT = LocalTime.of(8, 0);
+        LocalTime endOfShift = LocalTime.of(8, 0);
         AtomicReference<String> remainingHr = new AtomicReference<>();
-        final double TOTALSHIFTMINUTES = 600.0;
 
 
         //updates the clock every second with the current time
@@ -67,7 +62,7 @@ public class GenCheckController {
             //calculate how much time is left of the shift
             LocalDate today = LocalDate.now();
             LocalDateTime now = LocalDateTime.of(today, time);
-            LocalDateTime shiftEnd = LocalDateTime.of(today, ENDOFSHIFT);
+            LocalDateTime shiftEnd = LocalDateTime.of(today, endOfShift);
 
             if(shiftEnd.isBefore(now)){
                 shiftEnd = shiftEnd.plusDays(1);
@@ -76,11 +71,6 @@ public class GenCheckController {
             //calculates time remaining
             remainingHr.set(String.valueOf(java.time.Duration.between(now, shiftEnd).abs().toHours()));
             timeLeft.setText(remainingHr+" hrs "+(59-time.getMinute())+" mins");
-
-            //set progress bar
-            int minutesPassed = (Integer.parseInt(String.valueOf(remainingHr)) * 60) + (60-time.getMinute());
-            double progress = 1.0-(minutesPassed/TOTALSHIFTMINUTES);
-            progressBar.setProgress(progress);
 
         }),
             new KeyFrame(Duration.seconds(1))
