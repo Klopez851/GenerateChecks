@@ -104,8 +104,10 @@ public class GenCheckController {
             LocalTime now = LocalTime.now();
             if(now.getMinute() == 0 && now.getSecond() == 0 &&
                     now.getHour() != lastHour[0].getHour()){
-                //if an hr has passed then update the text and set the last hr to now
+                //if an hr has passed then update the text and set the last hr to now and alert for check
                 checks.set(checksGenerator.getMinutes());
+                alert.setVisible(true);
+                alert.setManaged(true);
 
                 //used ai for this, gives a clean format to the checks list
                 checkTimes.setText(
@@ -122,7 +124,6 @@ public class GenCheckController {
         hrPassed.play();
 
         //check if its time for a check
-        final AtomicBoolean[] hasAlerted = {new AtomicBoolean(false)};
         Timeline timeForCheck = new Timeline(new KeyFrame(Duration.seconds(1), e ->{
             LocalTime now = LocalTime.now();
             for(LocalTime t: checksGenerator.getMinArr()){
