@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
-
+import javafx.scene.control.ProgressBar;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -33,8 +33,12 @@ public class GenCheckController {
     @FXML
     private HBox alert;
 
-    //a formatter that mskes it so that the time is dysplaied in a certain format
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+    @FXML
+    private ProgressBar progressBar;
+
+    //a FORMATTER that mskes it so that the time is dysplaied in a certain format
+    private final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("hh:mm:ss");
+    private final double TOTALSHIFTMINUTES = 600.0;
     private LocalTime time;
     private AtomicReference<ArrayList<LocalTime>> checks = new AtomicReference<>(new ArrayList<>());
     private Time checksGenerator;
@@ -57,7 +61,7 @@ public class GenCheckController {
         Timeline sceneClock = new Timeline( new KeyFrame(Duration.ZERO, e ->{
             //live clock
             time = LocalTime.now();
-            clock.setText(time.format(formatter).formatted("h"));
+            clock.setText(time.format(FORMATTER).formatted("h"));
 
             //calculate how much time is left of the shift
             LocalDate today = LocalDate.now();
@@ -71,6 +75,11 @@ public class GenCheckController {
             //calculates time remaining
             remainingHr.set(String.valueOf(java.time.Duration.between(now, shiftEnd).abs().toHours()));
             timeLeft.setText(remainingHr+" hrs "+(59-time.getMinute())+" mins");
+
+            //set progress bar
+            int minutesPassed = (Integer.parseInt(String.valueOf(remainingHr)) * 60) + (60-time.getMinute());
+            double progress = 1.0-(minutesPassed/TOTALSHIFTMINUTES);
+            progressBar.setProgress(progress);
 
         }),
             new KeyFrame(Duration.seconds(1))
