@@ -15,12 +15,5 @@ This JavaFX application generates 4 time-based checkpoints spaced approximately 
 
 ---
 
-## 🛠️ Requirements
-- JavaFX SDK 24.0.1
-- Maven 4.x
----
-
 ## 📂 How to Run
-
-1. Clone the repo. 
-2. Run the main file (src/main/java/org/example/generatechecks/GenCheckApplication.java)
+1. The application is not yet packaged; I’m currently working on that.
