@@ -5,10 +5,10 @@
 .styledButton {
     -fx-background-image: url("button.png");
 
-    -fx-background-size: 165px 52px;
+    -fx-background-size: 145px 50px;
     -fx-background-position: -8px -6px;
     -fx-background-radius: 15;
-    -fx-pref-width: 150px;
+    -fx-pref-width: 160px;
     -fx-pref-height: 36px;
     -fx-background-color: transparent;
     -fx-border-color: transparent;
@@ -20,11 +20,12 @@
 
 .label {
     -fx-font-family: 'Press Start 2P';
+
 }
 
 .background{
     -fx-background-image: url("Background.png");
-    -fx-background-size: 750px 450px;
+    -fx-background-size: 375px 225px;
     -fx-background-position: center center;
 }
 

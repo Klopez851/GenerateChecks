@@ -19,40 +19,37 @@
  the fxml file that the file in question is w/n the same directory as this file, whichc is neat cuz i didnt
  know-->
 
-<AnchorPane pickOnBounds="false" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.generatechecks.GenCheckController">
+<AnchorPane pickOnBounds="false" prefHeight="223.0" prefWidth="287.0" snapToPixel="false" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.generatechecks.GenCheckController">
    <children>
-      <ImageView blendMode="SOFT_LIGHT" fitHeight="419.0" fitWidth="441.0" layoutX="11.0" layoutY="7.0" mouseTransparent="true" preserveRatio="true">
+      <ImageView blendMode="SOFT_LIGHT" fitHeight="206.0" fitWidth="215.0" layoutX="37.0" layoutY="16.0" mouseTransparent="true" preserveRatio="true">
          <image>
             <Image url="@rain.gif" />
          </image>
       </ImageView>
-      <ImageView blendMode="OVERLAY" fitHeight="433.0" fitWidth="132.0" layoutX="309.0" mouseTransparent="true" opacity="0.8" preserveRatio="true">
-         <image>
-            <Image url="@clouds_right.png" />
-         </image>
-      </ImageView>
-      <ImageView blendMode="OVERLAY" fitHeight="433.0" fitWidth="134.0" mouseTransparent="true" opacity="0.8" preserveRatio="true">
+      <ImageView blendMode="OVERLAY" fitHeight="227.0" fitWidth="69.0" mouseTransparent="true" opacity="0.8" preserveRatio="true">
          <image>
             <Image url="@clouds_left.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutX="-1.0" layoutY="28.0" pickOnBounds="false" prefHeight="390.0" prefWidth="441.0" spacing="20.0">
-         <padding>
-              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-          </padding>
-         <HBox alignment="TOP_CENTER" pickOnBounds="false" prefHeight="13.0" prefWidth="493.0">
+      <ImageView blendMode="OVERLAY" fitHeight="229.0" fitWidth="69.0" layoutX="218.0" mouseTransparent="true" opacity="0.8" preserveRatio="true">
+         <image>
+            <Image url="@clouds_right.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" fillWidth="false" layoutX="8.0" layoutY="11.0" pickOnBounds="false" prefHeight="213.0" prefWidth="272.0" spacing="10.0">
+         <HBox alignment="CENTER" pickOnBounds="false" prefHeight="13.0" prefWidth="493.0">
             <children>
-               <Label mouseTransparent="true" pickOnBounds="false" stylesheets="@style.css" text="Time Left:" textAlignment="CENTER">
+               <Label alignment="CENTER" mouseTransparent="true" pickOnBounds="false" stylesheets="@style.css" text="Time Left:" textAlignment="CENTER">
                   <font>
-                     <Font name="Press Start 2P" size="12.0" />
+                     <Font name="Press Start 2P" size="11.0" />
                   </font>
                   <HBox.margin>
-                     <Insets right="70.0" />
+                     <Insets right="5.0" />
                   </HBox.margin>
                </Label>
-               <Label fx:id="timeLeft" mouseTransparent="true" pickOnBounds="false" textAlignment="CENTER">
+               <Label fx:id="timeLeft" alignment="CENTER" mouseTransparent="true" pickOnBounds="false" text="jj" textAlignment="CENTER">
                   <font>
-                     <Font name="Press Start 2P" size="12.0" />
+                     <Font name="Press Start 2P" size="11.0" />
                   </font>
                   <HBox.margin>
                      <Insets left="0.0" />
@@ -63,19 +60,19 @@
                <Insets bottom="10.0" />
             </VBox.margin>
          </HBox>
-         <HBox alignment="TOP_CENTER" pickOnBounds="false" prefHeight="16.0" prefWidth="493.0">
+         <HBox alignment="CENTER" pickOnBounds="false" prefHeight="16.0" prefWidth="493.0">
             <children>
-               <Label alignment="TOP_CENTER" mouseTransparent="true" pickOnBounds="false" text="Checks Left:">
+               <Label alignment="CENTER" mouseTransparent="true" pickOnBounds="false" text="Checks Left:">
                   <font>
-                     <Font name="Press Start 2P" size="12.0" />
+                     <Font name="Press Start 2P" size="11.0" />
                   </font>
                   <HBox.margin>
-                     <Insets right="30.0" />
+                     <Insets right="15.0" />
                   </HBox.margin>
                </Label>
                <Label fx:id="checksLeft" mouseTransparent="true" pickOnBounds="false" text="40">
                   <font>
-                     <Font name="Press Start 2P" size="12.0" />
+                     <Font name="Press Start 2P" size="11.0" />
                   </font>
                   <HBox.margin>
                      <Insets />
@@ -83,16 +80,16 @@
                </Label>
             </children>
          </HBox>
-         <HBox fx:id="alert" alignment="CENTER" prefHeight="44.0" prefWidth="493.0">
+         <HBox fx:id="alert" alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="302.0">
             <children>
                <ImageView fx:id="alarm_bell" fitHeight="50.0" fitWidth="60.0" mouseTransparent="true" nodeOrientation="RIGHT_TO_LEFT" preserveRatio="true">
                   <image>
                      <Image url="@alarm_bell.png" />
                   </image>
                </ImageView>
-               <Button alignment="CENTER" contentDisplay="CENTER" onAction="#alertButtonAction" prefHeight="33.0" prefWidth="150.0" styleClass="styledButton" stylesheets="@style.css" text="Check!">
+               <Button alignment="CENTER" contentDisplay="CENTER" onAction="#alertButtonAction" prefHeight="33.0" prefWidth="145.0" styleClass="styledButton" stylesheets="@style.css" text="Check!">
                   <font>
-                     <Font name="Press Start 2P" size="12.0" />
+                     <Font name="Press Start 2P" size="9.0" />
                   </font>
                   <cursor>
                      <Cursor fx:constant="HAND" />
@@ -107,45 +104,35 @@
                   </image>
                </ImageView>
             </children>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
          </HBox>
          <Label fx:id="clock" mouseTransparent="true" pickOnBounds="false" text="12:59:37">
             <font>
-               <Font name="Press Start 2P" size="34.0" />
+               <Font name="Press Start 2P" size="18.0" />
             </font>
             <VBox.margin>
                <Insets top="5.0" />
             </VBox.margin>
          </Label>
-         <Label mouseTransparent="true" pickOnBounds="false" prefHeight="16.0" prefWidth="219.0" text="Upcoming Checks:">
+         <Label alignment="CENTER" mouseTransparent="true" pickOnBounds="false" prefHeight="16.0" prefWidth="222.0" text="Upcoming Checks:">
             <VBox.margin>
-               <Insets left="30.0" top="5.0" />
+               <Insets />
             </VBox.margin>
-         </Label>
-         <Label fx:id="checkTimes" mouseTransparent="true" pickOnBounds="false" text="no checks available">
             <font>
-               <Font name="Press Start 2P" size="12.0" />
+               <Font size="11.0" />
             </font>
          </Label>
-         <ProgressBar fx:id="progressBar" mouseTransparent="true" pickOnBounds="false" prefWidth="200.0" styleClass="progressbar" />
-         <HBox alignment="CENTER" pickOnBounds="false" prefHeight="21.0" prefWidth="335.0">
-            <children>
-               <ImageView fitHeight="34.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@Empty_heart.png" />
-                  </image>
-               </ImageView>
-               <ImageView fitHeight="34.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@Empty_heart.png" />
-                  </image>
-               </ImageView>
-               <ImageView fitHeight="34.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@Empty_heart.png" />
-                  </image>
-               </ImageView>
-            </children>
-         </HBox>
+         <Label fx:id="checkTimes" alignment="CENTER" mouseTransparent="true" pickOnBounds="false" prefHeight="16.0" prefWidth="295.0" text="no checks available">
+            <font>
+               <Font name="Press Start 2P" size="10.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="5.0" />
+            </VBox.margin>
+         </Label>
+         <ProgressBar fx:id="progressBar" mouseTransparent="true" pickOnBounds="false" prefHeight="20.0" prefWidth="190.0" styleClass="progressbar" />
       </VBox>
    </children>
 </AnchorPane>
