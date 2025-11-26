@@ -7,6 +7,7 @@ This JavaFX application generates 4 time-based checkpoints spaced approximately 
 
 - ⏱️ Generates 4 checkpoints every hour
 - 📍 Uses local time to determine spacing
+- Says how much time is left of a 10pm-8am shift
 ---
 
 ## Upcoming Improvements
@@ -16,6 +17,6 @@ This JavaFX application generates 4 time-based checkpoints spaced approximately 
 ---
 
 ## 📂 How to Run
-1. Download file
+1. Download the [zip](https://github.com/Klopez851/GenerateChecks/releases/tag/v1.0) file
 2. Extract to the desired location
 3. run GenerateChecksApp.exe
