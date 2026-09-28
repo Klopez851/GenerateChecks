@@ -1,26 +1,44 @@
 # GenerateChecks
-This JavaFX application generates 4 time-based checkpoints spaced approximately 10 to 20 minutes apart every hour. The checkpoints are calculated using the **local system time**
 
----
+GenerateChecks is a small JavaFX application that generates four time-based checkpoints throughout each hour. The checkpoints are spaced approximately 10–20 minutes apart and are calculated using the local system time.
 
-## ✨ Features
+This started as a small utility to solve a practical problem I was running into at work, while also giving me an opportunity to practice working with
+JavaFX and time-based logic in Java.
 
-- ⏱️ Generates 4 checkpoints every hour
-- 📍 Uses local time to determine spacing
----
+# Features
 
-## 🚧 Upcoming Improvements
+- Generates 4 checkpoints for each hour
 
-- Implement local storage of the number of checks left and reset it after the shift ends
+- Spaces checkpoints approximately 10–20 minutes apart
 
----
+- Uses the local system time to calculate the checkpoints
 
-## 🛠️ Requirements
-- JavaFX SDK 24.0.1
-- Maven 4.x
----
+- Provides a simple JavaFX interface for viewing the generated checkpoints
 
-## 📂 How to Run
+# How It Works
 
-1. Clone the repo. 
-2. Run the main file (src/main/java/org/example/generatechecks/GenCheckApplication.java)
+The application uses the current local system time to determine when the next checkpoints should occur. The goal is to spread the four checkpoints throughout the hour rather than having them occur at fixed times. The application also relies on JavaFX's event-driven model rather than manually creating threads. The Timeline instances handle the repeated checks and updates while keeping the UI responsive.
+
+# Future Improvements
+
+I'd like to continue improving the application by adding:
+
+- Local storage for tracking the number of checks remaining
+- Local storage of upcoming checks
+- Automatically resetting the check count when a shift ends
+- Additional improvements to the user interface and overall usability
+
+# Built With
+
+- Java — application logic
+
+- JavaFX 24.0.1 — user interface
+
+- Maven 4.x — project and dependency management
+
+# How to Run
+  - Download the latest .zip file in the Releases section of the repository
+  - Extract the files to your desired location
+  - Run the .exe file (should be named GenerateChecksApp.exe)
+
+The application should launch with the generated checkpoints based on your local system time.
